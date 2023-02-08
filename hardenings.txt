@@ -1,4 +1,4 @@
-# Proposed Hardenings for hash.c
+# Proposed Overall Hardenings
 
 1. Hash collision resolution: 
 
@@ -35,3 +35,23 @@ Regularly review the code to ensure that it's secure and free of vulnerabilities
 Encrypt sensitive data to protect it from from been read in case of successfull buffer overflow.
 
 
+My fixes aim to eliminate problems by targeting the specific issues that were identified in each case. Take for instance, the use of strcpy instead of strcmp. 
+The fix replaces the string comparison function to verify equality, instead of copying one string to another, thereby preventing the risk of buffer overflow and related security concerns. 
+Similarly, other fixes target memory allocation, data validation, and input handling, making the code more secure and reducing its vulnerability to attacks or security breaches.
+
+Also, Here are some hardening techniques that could be implemented at the OS level or host machine on which program is to be ran:
+
+- Enable Address Space Layout Randomization (ASLR): This is a technique that randomizes the location of code and data in memory. 
+  This makes it more difficult for attackers to execute code or exploit buffer overflows as the location of the target is not predictable.
+  is enabled by default on most recent versions of Ubuntu, but it can be manually enabled or disabled using the sysctl command.
+  
+
+- Enable Data Execution Prevention (DEP): This is a technique that marks certain pages of memory as non-executable. This helps prevent attackers from exploiting buffer overflows or similar 
+  vulnerabilities by executing code in a region of memory that is not intended for code execution. DEP is enabled by default on most recent versions of Ubuntu, but it can be manually enabled 
+  or disabled using the sysctl command.
+
+- Implement access controls: Ensure that the program is running with the least privilege necessary, and restrict access to sensitive information or functionality to only those who need it.
+  Access controls can be set using the built-in sudo and chmod commands, as well as by configuring permissions in the file system.
+
+- Limit the resources available to the program: You can use resource limits to limit the amount of memory, CPU time, and other resources that the program can use. 
+  This can help prevent resource exhaustion attacks and prevent the program from monopolizing system resources. This can be set in the /etc/security/limits.conf with the 'ulimit' command
