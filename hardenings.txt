@@ -1,0 +1,37 @@
+# Proposed Hardenings for hash.c
+
+1. Hash collision resolution: 
+
+Implement a hash collision resolution mechanism, such as chaining or open addressing, 
+to ensure efficient performance even with a large number of entries in the hash map.
+
+2. Input validation: 
+
+Validate the input to the functions to ensure that they are not passed invalid or malicious data, 
+such as a key string of excessively long length.
+
+3. Use Cryptographic Hashes: 
+
+To securely store sensitive data, cryptographic hash functions such as SHA-256 or bcrypt can be used.
+
+4. Use Safe String Libraries: 
+
+Use safe string libraries that help prevent buffer overflow attacks, such as strlcpy or snprintf instead of strcpy or sprintf.
+
+5. Avoid Hardcoded Values: 
+
+Avoid using hardcoded values for important parameters like MAP_MAX, as they can be easily exploited.
+
+6. Implement Memory Management: 
+
+Ensure that all memory resources are properly managed and freed when no longer needed to prevent memory leaks or buffer overflows.
+
+7. Perform Regular Code Reviews: 
+
+Regularly review the code to ensure that it's secure and free of vulnerabilities.
+
+8. Use Encryption: 
+
+Encrypt sensitive data to protect it from from been read in case of successfull buffer overflow.
+
+
