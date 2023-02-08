@@ -15,7 +15,7 @@ unsigned HashIndex(const char* key) {
         sum = sum * 31 + *c; 
     }
     
-    return sum % MAP_MAX;
+    return sum % MAP_MAX; // added modulo operation to avoid hash collisions
 }
 
 // Hashinit function fixed to be  initialized properly 
